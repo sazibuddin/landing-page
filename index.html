@@ -11,21 +11,6 @@
 <body>
     <header class="header-area">
         <div class="navbar-area bg-white">
-            <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white container">
-                <a class="navbar-brand" href="#">
-                  <img src="assets/images/logo.svg" alt="" style="margin-top: -10px;">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                  </ul>
-                  <a class="nav-link text-dark" href="#">Sign in</a>
-                  <a href="#" class="btn btn-primary rounded-0 my-2 my-sm-0" style="text-transform: uppercase;font-weight: bold;">Watch Demo</a>
-                </div>
-              </nav> -->
               <nav class="navbar navbar-default">
                 <div class="container">
                   <!-- Brand and toggle get grouped for better mobile display -->
@@ -74,44 +59,47 @@
                   <div class="card" style="border-radius: 20px;">
                     <h4 class="text-center">Get more Google Reviews today</h4>
                     <div class="slider-right-form-area">
-                        <form action="#">
-                            <div class="floating">
-                                <input  class="floating__input" name="c_name" type="text" placeholder="Company name" />
-                                <label  class="floating__label" data-content="Company name">
-                                <span class="hidden--visually">
-                                  Company name</span></label>
+                          <div id="form">
+                            <div class="form-item">
+                                    <p class="formLabel">Company name* </p>
+                                    <input type="text" name="c_name" class="form-style"  id="c_ name" autocomplete="off"/>
+                                </div>
+                                <div class="form-item">
+                                  <select name="word" id="word" class="form-style">
+                                          
+                                          <option value="1">1 location</option>
+                                          <option value="2-9">2-9 location</option>
+                                          <option value="10-24">10-24 location</option>
+                                  </select>
+                                 </div>
+                                 <div class="row">
+                                   <div class="col-md-6" style="margin-left: 0;padding-left: 0;">
+                                    <div class="form-item">
+                                      <p class="formLabel">Full name</p>
+                                      <input type="text" name="name" id="name" class="form-style" autocomplete="off" /> 
+                                  </div>
+                                   </div>
+                                   <div class="col-md-6" style="margin-left: 0;padding-left: 0;padding-right:0;">
+                                    <div class="form-item">
+                                      <p class="formLabel">Your phone number </p>
+                                      <input type="text" name="phone" id="phone" class="form-style" autocomplete="off" /> 
+                                  </div>
+                                   </div>
+                                 </div>
+                                  
+                               
+                               
+                                 <div class="form-item">
+                                  <p class="formLabel">Email </p>
+                                  <input type="email" name="email" id="email" class="form-style" autocomplete="off" /> 
                               </div>
-                           <div class="form-group">
-                             <select name="locations" class="form-control" style="height: 47px;">
-                                <option selected disabled>How many locations</option>
-                             </select>
-                           </div>
-                           <div class="row">
-                             <div class="col-6 ml-0 pl-0">
-                              <div class="floating">
-                                <input  class="floating__input" name="c_name" type="text" placeholder="Full name" />
-                                <label  class="floating__label" data-content="Full name">
-                                <span class="hidden--visually">
-                                  Full name</span></label>
-                              </div>
-                             </div>
-                             <div class="col-6 ml-0 pl-0">
-                              <div class="floating">
-                                <input  class="floating__input" name="c_name" type="text" placeholder="Your phone number" />
-                                <label  class="floating__label" data-content="Your phone number">
-                                <span class="hidden--visually">
-                                  Your phone number</span></label>
-                              </div>
-                             </div>
-                           </div>
-                           <div class="floating">
-                            <input  class="floating__input" name="email" type="Email" placeholder="Email" />
-                            <label  class="floating__label" data-content="Email">
-                            <span class="hidden--visually">
-                              Email</span></label>
-                          </div>
+                                <!-- <div class="clear-fix"></div> -->
+                                
                           <button type="submit" class="watch-demo-btn">Watch Demo</button>
-                        </form>
+                                </div>
+                        </div>
+                        </div>
+                      </form>
                     </div>
                 </div>
                  </div>
@@ -212,6 +200,26 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      var formInputs = $('input[type="text"],input[type="email"]');
+      formInputs.focus(function() {
+         $(this).parent().children('p.formLabel').addClass('formTop');
+         $('div#formWrapper').addClass('darken-bg');
+         $('div.logo').addClass('logo-active');
+      });
+      formInputs.focusout(function() {
+          if ($.trim($(this).val()).length == 0){
+          $(this).parent().children('p.formLabel').removeClass('formTop');
+          }
+          $('div#formWrapper').removeClass('darken-bg');
+          $('div.logo').removeClass('logo-active');
+      });
+      $('p.formLabel').click(function(){
+           $(this).parent().children('.form-style').focus();
+      });
+  });
+  </script>
 
 </body>
 </html>
